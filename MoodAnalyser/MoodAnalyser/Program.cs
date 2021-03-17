@@ -6,7 +6,9 @@ namespace MoodAnalyser1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-        }
+            MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+            string mood = moodAnalyser.analyseMood();
+           // Assert.AreEqual(mood, "Mood should not be Null");
+          }
     }
 }
