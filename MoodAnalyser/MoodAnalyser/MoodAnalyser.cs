@@ -18,10 +18,21 @@ namespace MoodAnalyser1
 
         public string analyseMood(string message)
         {
+            try
+            {
+                if (this.message.Equals(null))
+                {
+                    throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL_MESSAGE, "Mood should not be Null");
+                }
                 if (message.Equals("I am in sad Mood"))
                     return "SAD";
                 else
                     return "HAPPY";
+            }
+            catch (NullReferenceException)
+            {
+                return "HAPPY";
+            }
         }
         public string analyseMood() 
         {
@@ -38,7 +49,7 @@ namespace MoodAnalyser1
             }
             catch(NullReferenceException)
             {
-                return "HAPPY";
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL_MESSAGE, "Mood should not be Null");
             }
         }
 
