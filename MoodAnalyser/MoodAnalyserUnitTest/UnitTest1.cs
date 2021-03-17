@@ -40,7 +40,21 @@ namespace MoodAnalyserUnitTest
             MoodAnalyser moodAnalyser = new MoodAnalyser();
             string mood = moodAnalyser.analyseMood(null);
             Assert.AreEqual("HAPPY", mood);
+         }
+        [TestMethod]
+        public void whenMood_IsNull_ShouldReturn_CustomException_WithExceptionType()
+        {
+            MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+            Assert.ThrowsException<MoodAnalyserException>(() => moodAnalyser.analyseMood());
         }
-       
+        [TestMethod]
+        public void whenMood_IsEmpty_ShouldReturn_CustomException_WithExceptionType()
+        {
+            MoodAnalyser moodAnalyser = new MoodAnalyser("");
+            Assert.ThrowsException<MoodAnalyserException>(() => moodAnalyser.analyseMood());
+        }
+
+
+
     }
 }

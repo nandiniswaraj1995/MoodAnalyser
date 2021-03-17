@@ -20,7 +20,7 @@ namespace MoodAnalyser1
         {
             try
             {
-                if (this.message.Equals(null))
+                if (message.Equals(null))
                 {
                     throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL_MESSAGE, "Mood should not be Null");
                 }
@@ -41,6 +41,11 @@ namespace MoodAnalyser1
                 if (this.message.Equals(null))
                 {
                     throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL_MESSAGE, "Mood should not be Null");
+                }
+                if (this.message.Equals(String.Empty))
+                {
+                    throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.EMPTY_MESSAGE, "Mood should not be Empty");
+
                 }
                 if (message.Equals("I am in sad Mood"))
                     return "SAD";
