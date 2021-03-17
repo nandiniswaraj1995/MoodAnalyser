@@ -53,8 +53,34 @@ namespace MoodAnalyserUnitTest
             MoodAnalyser moodAnalyser = new MoodAnalyser("");
             Assert.ThrowsException<MoodAnalyserException>(() => moodAnalyser.analyseMood());
         }
+        [TestMethod]
+        public void GivenMoodAnalyseClassName_ShouldReturnMoodAnalyserObject()
+        {
+            string message = null;
+            object expected = new MoodAnalyser(message);
+            object obj = MoodAnalyserFactory.CreateMoodAnalyserObject("MoodAnalyser1.MoodAnalyser", "MoodAnalyser");
+            expected.Equals(obj);
+        }
+        [TestMethod]
+        public void GivenMoodAnalyseClassName_Improper_ShouldThrow_NO_SUCH_CLASS_Exception()
+        {
+            string message = null;
+            object expected = new MoodAnalyser(message);
+            Assert.ThrowsException<MoodAnalyserException>(() => MoodAnalyserFactory.CreateMoodAnalyserObject("MoodAnalyser1.Mood", "MoodAnalyser"));
+        }
+        [TestMethod]
+        public void GivenMoodAnalyseConstructorName_Improper_ShouldThrow_NO_SUCH_METHOD_Exception()
+        {
+            string message = null;
+            object expected = new MoodAnalyser(message);
+            Assert.ThrowsException<MoodAnalyserException>(() => MoodAnalyserFactory.CreateMoodAnalyserObject("MoodAnalyser1.Mood", "Mood"));
+
+        }
 
 
 
+
+
+
+        }
     }
-}
